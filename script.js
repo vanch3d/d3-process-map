@@ -688,9 +688,9 @@ function highlightObject(obj) {
     }
 }
 
-var showingDocs       = false,
-    docsClosePadding  = 8,
-    desiredDocsHeight = 300;
+var showingDocs       = false;
+    //docsClosePadding  = 8,
+    //desiredDocsHeight = 300;
 
 function resize(showDocs) {
     var docsHeight  = 0,
@@ -705,7 +705,7 @@ function resize(showDocs) {
     }
 
     if (showingDocs) {
-        docsHeight = desiredDocsHeight;
+        docsHeight = config.docs.desiredDocsHeight;
         $docs.css('height', docsHeight + 'px');
     }
 
@@ -713,7 +713,7 @@ function resize(showDocs) {
     $graph.css('height', graphHeight + 'px');
 
     $close.css({
-        top   : graphHeight + docsClosePadding + 'px',
-        right : window.innerWidth - $docs[0].clientWidth + docsClosePadding + 'px'
+        top   : graphHeight + config.docs.docsClosePadding + 'px',
+        right : window.innerWidth - $docs[0].clientWidth + config.docs.docsClosePadding + 'px'
     });
 }
