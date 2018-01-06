@@ -19,6 +19,10 @@
         },
         "ticksWithoutCollisions" : 50
     },
+    "docs" : {
+        "desiredDocsHeight" : 200,
+        "docsClosePadding" : 8
+    },
     "types" : {
         "group0" : {
             "short" : "Group 0",
