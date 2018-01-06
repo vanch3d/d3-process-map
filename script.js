@@ -105,7 +105,7 @@ function drawGraph() {
                 target : obj
             };
             link.strength = (link.source.linkStrength || 1)
-                          * (link.target.linkStrength || 1);
+                * (link.target.linkStrength || 1);
             graph.links.push(link);
         }
     }
@@ -122,8 +122,8 @@ function drawGraph() {
                 key      : key,
                 type     : obj.type,
                 typeName : (config.types[obj.type]
-                            ? config.types[obj.type].short
-                            : obj.type),
+                    ? config.types[obj.type].short
+                    : obj.type),
                 group    : obj.group,
                 count    : 0
             };
@@ -159,12 +159,12 @@ function drawGraph() {
     graph.svg = d3.select('#graph').append('svg')
         .attr('width' , graph.width  + graph.margin.left + graph.margin.right)
         .attr('height', graph.height + graph.margin.top  + graph.margin.bottom)
-      .append('g')
+        .append('g')
         .attr('transform', 'translate(' + graph.margin.left + ',' + graph.margin.top + ')');
 
     graph.svg.append('defs').selectAll('marker')
         .data(['end'])
-      .enter().append('marker')
+        .enter().append('marker')
         .attr('id'          , String)
         .attr('viewBox'     , '0 -5 10 10')
         .attr('refX'        , 10)
@@ -172,7 +172,7 @@ function drawGraph() {
         .attr('markerWidth' , 6)
         .attr('markerHeight', 6)
         .attr('orient'      , 'auto')
-      .append('path')
+        .append('path')
         .attr('d', 'M0,-5L10,0L0,5');
 
     // adapted from http://stackoverflow.com/questions/9630008
@@ -188,9 +188,9 @@ function drawGraph() {
     glow.append('feColorMatrix')
         .attr('type'  , 'matrix')
         .attr('values', '0 0 0 0  0 '
-                      + '0 0 0 0  0 '
-                      + '0 0 0 0  .7 '
-                      + '0 0 0 1  0 ');
+            + '0 0 0 0  0 '
+            + '0 0 0 0  .7 '
+            + '0 0 0 1  0 ');
 
     glow.append('feGaussianBlur')
         .attr('stdDeviation', 3)
@@ -198,16 +198,16 @@ function drawGraph() {
 
     glow.append('feMerge').selectAll('feMergeNode')
         .data(['coloredBlur', 'SourceGraphic'])
-      .enter().append('feMergeNode')
+        .enter().append('feMergeNode')
         .attr('in', String);
 
     graph.legend = graph.svg.append('g')
         .attr('class', 'legend')
         .attr('x', 0)
         .attr('y', 0)
-      .selectAll('.category')
+        .selectAll('.category')
         .data(d3.values(graph.categories))
-      .enter().append('g')
+        .enter().append('g')
         .attr('class', 'category');
 
     graph.legendConfig = {
@@ -251,7 +251,7 @@ function drawGraph() {
 
     graph.line = graph.svg.append('g').selectAll('.link')
         .data(graph.force.links())
-      .enter().append('line')
+        .enter().append('line')
         .attr('class', 'link');
 
     graph.draggedThreshold = d3.scale.linear()
@@ -301,7 +301,7 @@ function drawGraph() {
 
     graph.node = graph.svg.selectAll('.node')
         .data(graph.force.nodes())
-      .enter().append('g')
+        .enter().append('g')
         .attr('class', 'node')
         .call(graph.drag)
         .on('mouseover', function(d) {
