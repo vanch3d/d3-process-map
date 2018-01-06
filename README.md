@@ -66,12 +66,15 @@ A JSON object which contains the following fields:
   * `numColors`: The number of colors to display (between **3** and **12**).
   * `labelPadding`: The padding inside the node rectangles, in pixels.
   * `labelMargin`: The margin outside the node rectangles, in pixels.
+* `docs`: Parameters for the documentation panel.
+  * `desiredDocsHeight`: The height of the panel, in pixels.
+  * `docsClosePadding`: The default padding around the 'close' button.
 * `types`: Descriptions of the object types displayed in this graph, each with
   a `long` and a `short` field that describe the object type for documentation
   and for the graph legend, respectively.
 * `constraints`: An array of objects that describe how to position the nodes.
   Each constraint should have a `type` field whose value should be either
-  `'position'` or `'linkStrength'`, and a `has` field that specifies the
+  `'position'`, `'linkStrength'` or `'radialConstraints'`, and a `has` field that specifies the
   conditions an object must meet for the constraints to be applied.
   * **Position constraints**:  These constraints should have the properties
     `weight`, `x` (optional) and `y` (optional).  On each iteration of the
@@ -81,6 +84,12 @@ A JSON object which contains the following fields:
     `strength`, which is a multiplier on the link strength of the links to and
     from the objects that the constraint applies to.  This can be used to relax
     the position of certain nodes.
+  * **Radial constraints**:  see http://bl.ocks.org/vlandham/5087480. 
+    These constraints should have the properties `radius`, a multiplier [0,1] on the 
+    min(width,height) of the graph and `startAngle`, the position [-180,180] where to 
+    start turning from on the circle (in degree, 0 being "right", positive being clockwise).
+    Note that the process arbitrarily takes the index of the nodes in the container to 
+    compute the positions one by one.
 
 #### `*.mkdn`
 
